@@ -1,4 +1,4 @@
-package com.lxb.draft.designPattern.observerPattern;
+package com.lxb.draft.designPattern.observerPattern.rawObserverPattern;
 
 import java.util.ArrayList;
 

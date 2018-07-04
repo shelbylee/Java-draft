@@ -1,15 +1,15 @@
-package com.lxb.draft.designPattern.observerPattern;
+package com.lxb.draft.designPattern.observerPattern.observerable;
+
+import java.util.Observable;
+import java.util.Observer;
 
 public class ForecastDisplay implements Observer, DisplayElement {
 
     private float currentPressure = 29.92f;
     private float lastPressure;
 
-    private WeatherData weatherData;
-
-    public ForecastDisplay(WeatherData weatherData) {
-        this.weatherData = weatherData;
-        weatherData.registerObserver(this);
+    public ForecastDisplay(Observable observable) {
+        observable.addObserver(this);
     }
 
     @Override
@@ -26,9 +26,12 @@ public class ForecastDisplay implements Observer, DisplayElement {
     }
 
     @Override
-    public void update(float temperature, float humidity, float pressure) {
-        lastPressure = currentPressure;
-        currentPressure = pressure;
-        display();
+    public void update(Observable o, Object arg) {
+        if (o instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData)o;
+            lastPressure = currentPressure;
+            currentPressure = weatherData.getPressure();
+            display();
+        }
     }
 }

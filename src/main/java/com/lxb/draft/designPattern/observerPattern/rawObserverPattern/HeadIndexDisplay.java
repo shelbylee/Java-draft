@@ -1,4 +1,4 @@
-package com.lxb.draft.designPattern.observerPattern;
+package com.lxb.draft.designPattern.observerPattern.rawObserverPattern;
 
 public class HeadIndexDisplay implements Observer, DisplayElement {
 
